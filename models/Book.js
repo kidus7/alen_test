@@ -9,10 +9,17 @@ const bookSchema = new mongoose.Schema({
     description:{
         type: String,
     },
-    timeCreated: {
-        type: Date,
-        default: () => Date.now(),
-    }
+},
+{
+    toJSON: {
+        // this will remove this fields from the response
+        transform(doc, ret) {
+            delete ret.__v;
+            delete ret.createdAt;
+            delete ret.updatedAt;
+        }
+    },
+    timestamps: true
 });
 
 module.exports = mongoose.model('Book', bookSchema);
