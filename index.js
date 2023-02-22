@@ -1,7 +1,7 @@
 import express from 'express';
 import ErrorMiddleware from './middleware/index.js';
 import dotenv from 'dotenv';
-
+const mongoose = require('mongoose');
 const app = express()
 dotenv.config()
 
@@ -22,4 +22,8 @@ app.get('/', (req, res, next) => {
 })
 app.use(ErrorMiddleware)
 
+mongoose.connect(process.env.DB_URL,{
+}).then(()=> console.log('connected...'))
+    .catch(err => console.log(err))
+    
 app.listen(port, () => console.log(`${process.env.NODE_ENV.toUpperCase()} Server is listening on port ${port}!`))
