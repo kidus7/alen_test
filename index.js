@@ -20,7 +20,6 @@ app.get('/', (req, res, next) => {
         return next(error);
     }
 })
-
 app.use(ErrorMiddleware)
 
 app.listen(port, () => console.log(`${process.env.NODE_ENV.toUpperCase()} Server is listening on port ${port}!`))
