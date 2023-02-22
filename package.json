@@ -1,0 +1,24 @@
+{
+  "name": "alen-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start:dev": "cross-env NODE_ENV=dev nodemon index.js",
+    "start:qa": "cross-env NODE_ENV=qa nodemon index.js",
+    "start:prod": "cross-env NODE_ENV=prod nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20",
+    "use-env": "^11.0.0",
+    "cross-env": "^7.0.3"
+  },
+  "devDependencies": {
+  }
+}
