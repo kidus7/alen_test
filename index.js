@@ -8,19 +8,6 @@ dotenv.config()
 const port = 3000
 
 app.use(express.json())
-
-app.get('/', (req, res, next) => { 
-    try {
-        const user = req.body.user;
-        if (!user) { 
-            // res.status(404).send({ status: 404, message: 'User Not Found' });
-            throw new Error("User not found")
-        }
-    } catch (error) { 
-        return next(error);
-    }
-})
-
 app.use(ErrorMiddleware)
 
 app.listen(port, () => console.log(`Server is listening on port ${port}!`))
