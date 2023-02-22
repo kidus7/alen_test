@@ -5,25 +5,26 @@ const mongoose = require('mongoose');
 const app = express()
 dotenv.config()
 
-const port = 3000
+mongoose.connect(process.env.DB_URL, {})
+    .then(() => console.log('connected...'))
+    .catch(err => console.log(err))
 
 app.use(express.json())
 
-app.get('/', (req, res, next) => { 
+app.get('/', (req, res, next) => {
     try {
         const user = req.body.user;
-        if (!user) { 
+        if (!user) {
             res.status(404).send({ status: 404, message: 'User Not Found' });
             // throw new Error("User not found")
         }
-    } catch (error) { 
+    } catch (error) {
         return next(error);
     }
 })
+
+
+
 app.use(ErrorMiddleware)
 
-mongoose.connect(process.env.DB_URL,{
-}).then(()=> console.log('connected...'))
-    .catch(err => console.log(err))
-    
-app.listen(port, () => console.log(`${process.env.NODE_ENV.toUpperCase()} Server is listening on port ${port}!`))
+app.listen(process.env.PORT, () => console.log(`${process.env.NODE_ENV.toUpperCase()} Server is listening on port ${process.env.PORT}!`))
