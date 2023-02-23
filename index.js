@@ -1,7 +1,7 @@
 import express from 'express';
 import ErrorMiddleware from './middleware/index.js';
 import dotenv from 'dotenv';
-const mongoose = require('mongoose');
+import mongoose = require('mongoose');
 const app = express()
 dotenv.config()
 
